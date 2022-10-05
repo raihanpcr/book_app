@@ -7,7 +7,7 @@
             {
                   "name": "book_app",
                   "request": "launch",
-                  "deviceId": "chrome",
+                  // "deviceId": "chrome",
                   "type": "dart"
             },
             {
