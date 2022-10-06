@@ -1,8 +1,8 @@
-import 'dart:convert';
+
 import 'package:book_app/controller/book_controller.dart';
-import 'package:book_app/models/book_list_respone.dart';
+
 import 'package:book_app/views/detail_book_page.dart';
-import 'package:http/http.dart' as http;
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -26,12 +26,12 @@ class _BookListPageState extends State<BookListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Book Catalogue"),
+        title: const Text("Book Catalogue"),
       ),
       body: Consumer<BookController>(
         builder: (context, controller, child) => Container(
             child: bookController!.bookList == null
-                ? Center(child: CircularProgressIndicator())
+                ? const Center(child: CircularProgressIndicator())
                 : ListView.builder(
                     itemCount: bookController!.bookList!.books!.length,
                     itemBuilder: (context, index) {

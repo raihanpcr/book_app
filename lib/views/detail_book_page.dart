@@ -1,12 +1,9 @@
-import 'dart:convert';
-import 'package:book_app/models/book_detail_response.dart';
 import 'package:book_app/views/image_view_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+
 import 'package:provider/provider.dart';
 
 import '../controller/book_controller.dart';
-import '../models/book_list_respone.dart';
 
 class DetailBookPage extends StatefulWidget {
   const DetailBookPage({super.key, required this.isbn});
@@ -20,7 +17,6 @@ class _DetailBookPageState extends State<DetailBookPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     controller = Provider.of<BookController>(context, listen: false);
     controller!.fecthDetailBookApi(widget.isbn);
@@ -30,7 +26,7 @@ class _DetailBookPageState extends State<DetailBookPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Detail"),
+        title: const Text("Detail"),
       ),
       body: Consumer<BookController>(builder: (context, controller, child) {
         return controller.detailBook == null
@@ -65,7 +61,7 @@ class _DetailBookPageState extends State<DetailBookPage> {
                               children: [
                                 Text(
                                   controller.detailBook!.title!,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -142,8 +138,8 @@ class _DetailBookPageState extends State<DetailBookPage> {
                         Text("Year : " + controller.detailBook!.year!),
                         Text("ISBN " + controller.detailBook!.isbn13!),
                         Text(controller.detailBook!.pages! + " Pages"),
-                        Text("Publisher : " +
-                            controller.detailBook!.publisher!),
+                        Text(
+                            "Publisher : " + controller.detailBook!.publisher!),
                         Text("Language : " + controller.detailBook!.language!),
                       ],
                     ),
@@ -155,8 +151,7 @@ class _DetailBookPageState extends State<DetailBookPage> {
                             child: ListView.builder(
                               shrinkWrap: true,
                               scrollDirection: Axis.horizontal,
-                              itemCount:
-                                  controller.similarBooks!.books!.length,
+                              itemCount: controller.similarBooks!.books!.length,
                               // physics: NeverScrollableScrollPhysics(),
                               itemBuilder: ((context, index) {
                                 final current =
